@@ -64,11 +64,7 @@ const Msbot = () => {
     }
   };
 const handleSendButton = async (action = "send") => {
-  if (action === "Heart clicked!") {
-    console.log(action);
-    // Add any additional functionality for when the heart is clicked
-    return;
-  }
+
 
   const userText = userInput.trim();
   if (userText !== "") {
@@ -89,24 +85,10 @@ const handleSendButton = async (action = "send") => {
   }
 };
 
-  // const handleSendButton = async () => {
-  //   const userText = userInput.trim();
-  //   if (userText !== "") {
-  //     setUserInput("");
-  //     const content = {
-  //       sender: "user",
-  //       content: userText,
-  //       timestamp: getTime(),
-  //     };
-  //     const { data } = await axios.post(
-  //       `http://localhost:8890/customerMessage`,
-  //       content
-  //     );
-  //     setChatMessages((prevMessages) => [...prevMessages, content]);
-  //     console.log(data);
-  //     // getHardResponse(userText);
-  //   }
-  // };
+  const showEmoji = async () => {
+    alert("Emoji")
+        console.log("Show Emoji");
+  };
 
   const getBotResponse = (input) => {
     if (input === "rock") {
@@ -219,9 +201,15 @@ const handleSendButton = async (action = "send") => {
                 <div className="chat-bar-icons">
                   <i
                     id="chat-icon"
-                    style={{ color: "crimson" }}
-                    className = "fas fa-heart"
-                    onClick={() => handleSendButton("Heart clicked!")}
+                    style = {
+                      {
+                        color: "#333"
+                      }
+                    }
+                    className = "fas fa-face-smile"
+                    onClick = {
+                      () => showEmoji()
+                    }
                   ></i>
                   <i
                     id="chat-icon"
