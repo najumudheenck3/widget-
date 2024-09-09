@@ -63,25 +63,50 @@ const Msbot = () => {
       handleSendButton();
     }
   };
+const handleSendButton = async (action = "send") => {
+  if (action === "Heart clicked!") {
+    console.log(action);
+    // Add any additional functionality for when the heart is clicked
+    return;
+  }
 
-  const handleSendButton = async () => {
-    const userText = userInput.trim();
-    if (userText !== "") {
-      setUserInput("");
-      const content = {
-        sender: "user",
-        content: userText,
-        timestamp: getTime(),
-      };
-      const { data } = await axios.post(
-        `http://localhost:8890/customerMessage`,
-        content
-      );
-      setChatMessages((prevMessages) => [...prevMessages, content]);
-      console.log(data);
-      // getHardResponse(userText);
-    }
-  };
+  const userText = userInput.trim();
+  if (userText !== "") {
+    setUserInput("");
+    const content = {
+      sender: "user",
+      content: userText,
+      timestamp: getTime(),
+    };
+    const {
+      data
+    } = await axios.post(
+      `http://localhost:8890/customerMessage`,
+      content
+    );
+    setChatMessages((prevMessages) => [...prevMessages, content]);
+    console.log(data);
+  }
+};
+
+  // const handleSendButton = async () => {
+  //   const userText = userInput.trim();
+  //   if (userText !== "") {
+  //     setUserInput("");
+  //     const content = {
+  //       sender: "user",
+  //       content: userText,
+  //       timestamp: getTime(),
+  //     };
+  //     const { data } = await axios.post(
+  //       `http://localhost:8890/customerMessage`,
+  //       content
+  //     );
+  //     setChatMessages((prevMessages) => [...prevMessages, content]);
+  //     console.log(data);
+  //     // getHardResponse(userText);
+  //   }
+  // };
 
   const getBotResponse = (input) => {
     if (input === "rock") {
@@ -195,13 +220,13 @@ const Msbot = () => {
                   <i
                     id="chat-icon"
                     style={{ color: "crimson" }}
-                    className="fa fa-fw fa-heart"
+                    className = "fas fa-heart"
                     onClick={() => handleSendButton("Heart clicked!")}
                   ></i>
                   <i
                     id="chat-icon"
                     style={{ color: "#333" }}
-                    className="fa fa-fw fa-send"
+                    className = "fas fa-paper-plane"
                     onClick={handleSendButton}
                   ></i>
                 </div>
